@@ -1,0 +1,14 @@
+---
+
+# "Global" files to copy
+copy_files_list:
+  # - src: '/path/to/source/file'
+  #   dest: '/path/to/target/file'
+  #   create_parent_dirs: no
+  #   # state: 'absent'
+
+# "Host group" files to copy
+copy_files_group_list:
+
+# "Host" files to copy
+copy_files_host_list:

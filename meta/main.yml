@@ -1,0 +1,31 @@
+---
+
+galaxy_info:
+  author: Robin Schneider
+  description: Simple role to copy files from the Ansible controller to target systems.
+  license: AGPLv3
+  platforms:
+  - name: Debian
+    versions:
+      - all
+  - name: Ubuntu
+    versions:
+      - all
+  categories:
+    - system
+  min_ansible_version: 1.8.4
+dependencies: []
+ansigenome_info:
+  github_url: "https://github.com/ypid/ansible-copy"
+  git_branch: "master"
+  galaxy_id: ""
+
+  travis: True
+
+  synopsis: |
+    This role was written to be able to specify files to copy via global, group and host configuration variables.
+
+    ### Features
+
+    * Ensures that the target parent directory exists.
+    * Allows to delete files defined as `state: 'absent'`.

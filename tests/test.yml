@@ -1,0 +1,11 @@
+---
+
+- hosts: localhost
+  remote_user: root
+  vars:
+    copy_files_host_list:
+      - src: '/etc/issue'
+        dest: '/tmp/target/backup/etc/issue'
+
+  roles:
+    - ansible-copy
