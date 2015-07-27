@@ -1,5 +1,6 @@
 ---
 
+## Could use the file module, but this would require getting the dirname first.
 - name: Ensure that parent directories exist
   shell: mkdir --parents $(dirname "{{ item.dest }}")
   changed_when: False
