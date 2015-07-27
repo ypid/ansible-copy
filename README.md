@@ -1,6 +1,8 @@
 ## copy
 
 [![Travis CI](http://img.shields.io/travis/ypid/ansible-copy.svg?style=flat)](http://travis-ci.org/ypid/ansible-copy)
+[![Ansible Galaxy](http://img.shields.io/badge/galaxy-ypid.copy-660198.svg?style=flat)](https://galaxy.ansible.com/list#/roles/4558)
+[![Platforms](http://img.shields.io/badge/platforms-debian%20/%20ubuntu-lightgrey.svg?style=flat)](#)
 
 
 Simple role to copy files from the Ansible controller to target systems.
@@ -11,6 +13,17 @@ This role was written to be able to specify files to copy via global, group and 
 
 * Ensures that the target parent directory exists.
 * Allows to delete files defined as `state: 'absent'`.
+
+### Installation
+
+This role requires at least Ansible `v1.8.4`. To install it, run:
+
+    ansible-galaxy install ypid.copy
+
+To install via git, run either:
+
+    git clone https://github.com/ypid/ansible-copy.git ypid.copy
+    git submodule add https://github.com/ypid/ansible-copy.git roles/ypid.copy
 
 
 
