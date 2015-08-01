@@ -23,7 +23,7 @@ This role requires at least Ansible `v1.8.4`. To install it, run:
 To install via git, run either:
 
     git clone https://github.com/ypid/ansible-copy.git ypid.copy
-    git submodule add https://github.com/ypid/ansible-copy.git roles/ypid.copy
+    git submodule add https://github.com/ypid/ansible-copy.git ypid.copy
 
 
 
@@ -34,20 +34,27 @@ List of default variables available in the inventory:
 
     ---
     
-    # "Global" files to copy
-    copy_files_list:
-      # - src: '/path/to/source/file'
-      #   dest: '/path/to/target/file'
-      #   create_parent_dirs: no
-      #   # state: 'absent'
+    ## "Global" files to copy
+    copy_files_list: []
+    # copy_files_list:
+    #   - src: '/path/to/source/file'
+    #     dest: '/path/to/target/file'
+    #     create_parent_dirs: no
+    #     # state: 'absent'
     
-    # "Host group" files to copy
-    copy_files_group_list:
+    ## "Host group" files to copy
+    copy_files_group_list: []
     
-    # "Host" files to copy
-    copy_files_host_list:
+    ## "Host" files to copy
+    copy_files_host_list: []
+    
+    ## Testing, not yet working:
+    ## Ignore errors during copy job.
+    # copy_ignore_errors: False
 
+List of internal variables used by the role:
 
+    copy_files_list_combined
 
 
 ### Authors and license

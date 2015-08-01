@@ -1,5 +1,9 @@
 ---
 
+- name: Combine file lists
+  set_fact:
+    copy_files_list_combined: '{{ copy_files_list + copy_files_group_list + copy_files_host_list | default([]) }}'
+
 ## Could use the file module, but this would require getting the dirname first.
 - name: Ensure that parent directories exist
   shell: mkdir --parents $(dirname "{{ item.dest }}")
@@ -11,10 +15,7 @@
             not item.create_parent_dirs
           )
         )
-  with_flattened:
-    - copy_files_list
-    - copy_files_group_list
-    - copy_files_host_list
+  with_items: copy_files_list_combined
 
 - name: Copy files to target system
   copy:
@@ -29,23 +30,21 @@
     seuser:   '{{ item.seuser   | default(omit) }}'
     backup:   '{{ item.backup   | default(omit) }}'
     validate: '{{ item.validate | default(omit) }}'
+  # ignore_errors: copy_ignore_errors
+  # ignore_errors: yes
+  # failed_when: True
+  ## Not working, see: https://github.com/ansible/ansible/issues/3107
   when: (
           item is mapping and (
             item.state is string and item.state == 'present' or
             item.state is undefined
           )
         )
-  with_flattened:
-    - copy_files_list
-    - copy_files_group_list
-    - copy_files_host_list
+  with_items: copy_files_list_combined
 
 - name: Delete files if state is absent
   file:
     path: '{{ item.dest }}'
     state: 'absent'
   when: (item.state is string and item.state == 'absent')
-  with_flattened:
-    - copy_files_list
-    - copy_files_group_list
-    - copy_files_host_list
+  with_items: copy_files_list_combined
