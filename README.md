@@ -3,11 +3,19 @@
 [![Travis CI](http://img.shields.io/travis/ypid/ansible-copy.svg?style=flat)](http://travis-ci.org/ypid/ansible-copy)
 [![Ansible Galaxy](http://img.shields.io/badge/galaxy-ypid.copy-660198.svg?style=flat)](https://galaxy.ansible.com/list#/roles/4558)
 [![Platforms](http://img.shields.io/badge/platforms-debian%20/%20ubuntu-lightgrey.svg?style=flat)](#)
+[![GitHub Tags](https://img.shields.io/github/tag/ypid/ansible-copy.svg)](https://github.com/ypid/ansible-copy)
+[![GitHub Stars](https://img.shields.io/github/stars/ypid/ansible-copy.svg)](https://github.com/ypid/ansible-copy)
 
 
 Simple role to copy files from the Ansible controller to target systems.
 
-This role was written to be able to specify files to copy via global, group and host configuration variables.
+This role was written to be able to specify files to copy via inventory variables.
+It is based on Ansible’s [copy module].
+If the [synchronize module] seems more suitable checkout the role [ypid.synchronize].
+
+[synchronize module]: https://docs.ansible.com/ansible/synchronize_module.html
+[copy module]: https://docs.ansible.com/ansible/copy_module.html
+[ypid.synchronize]: https://galaxy.ansible.com/list#/roles/4749
 
 ### Features
 

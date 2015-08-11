@@ -23,7 +23,13 @@ ansigenome_info:
   travis: True
 
   synopsis: |
-    This role was written to be able to specify files to copy via global, group and host configuration variables.
+    This role was written to be able to specify files to copy via inventory variables.
+    It is based on Ansible’s [copy module].
+    If the [synchronize module] seems more suitable checkout the role [ypid.synchronize].
+
+    [synchronize module]: https://docs.ansible.com/ansible/synchronize_module.html
+    [copy module]: https://docs.ansible.com/ansible/copy_module.html
+    [ypid.synchronize]: https://galaxy.ansible.com/list#/roles/4749
 
     ### Features
 
