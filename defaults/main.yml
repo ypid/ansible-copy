@@ -1,12 +1,15 @@
 ---
 
-## "Global" files to copy
-copy_files_list: []
+## Checkout the documentation for the copy module.
+
 # copy_files_list:
 #   - src: '/path/to/source/file'
 #     dest: '/path/to/target/file'
 #     create_parent_dirs: no
 #     # state: 'absent'
+
+## "Global" files to copy
+copy_files_list: []
 
 ## "Host group" files to copy
 copy_files_group_list: []

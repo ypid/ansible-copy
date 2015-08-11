@@ -19,17 +19,21 @@
 
 - name: Copy files to target system
   copy:
-    src:   '{{ item.src }}'
-    dest:  '{{ item.dest }}'
-    owner: '{{ item.owner | default(omit) }}'
-    group: '{{ item.group | default(omit) }}'
-    mode:  '{{ item.mode  | default(omit) }}'
-    selevel:  '{{ item.selevel  | default(omit) }}'
-    serole:   '{{ item.serole   | default(omit) }}'
-    setype:   '{{ item.setype   | default(omit) }}'
-    seuser:   '{{ item.seuser   | default(omit) }}'
-    backup:   '{{ item.backup   | default(omit) }}'
-    validate: '{{ item.validate | default(omit) }}'
+    dest:           '{{ item.dest }}'
+    backup:         '{{ item.backup         | default(omit) }}'
+    content:        '{{ item.content        | default(omit) }}'
+    directory_mode: '{{ item.directory_mode | default(omit) }}'
+    follow:         '{{ item.follow         | default(omit) }}'
+    force:          '{{ item.force          | default(omit) }}'
+    group:          '{{ item.group          | default(omit) }}'
+    mode:           '{{ item.mode           | default(omit) }}'
+    owner:          '{{ item.owner          | default(omit) }}'
+    selevel:        '{{ item.selevel        | default(omit) }}'
+    serole:         '{{ item.serole         | default(omit) }}'
+    setype:         '{{ item.setype         | default(omit) }}'
+    seuser:         '{{ item.seuser         | default(omit) }}'
+    src:            '{{ item.src            | default(omit) }}'
+    validate:       '{{ item.validate       | default(omit) }}'
   # ignore_errors: copy_ignore_errors
   # ignore_errors: yes
   # failed_when: True
