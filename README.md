@@ -2,7 +2,7 @@
 
 [![Travis CI](http://img.shields.io/travis/ypid/ansible-copy.svg?style=flat)](http://travis-ci.org/ypid/ansible-copy)
 [![Ansible Galaxy](http://img.shields.io/badge/galaxy-ypid.copy-660198.svg?style=flat)](https://galaxy.ansible.com/list#/roles/4558)
-[![Platforms](http://img.shields.io/badge/platforms-debian%20/%20ubuntu-lightgrey.svg?style=flat)](#)
+[![Platforms](http://img.shields.io/badge/platforms-debian%20/%20ubuntu-lightgrey.svg?style=flat)](https://galaxy.ansible.com/list#/roles/4558)
 [![GitHub Tags](https://img.shields.io/github/tag/ypid/ansible-copy.svg)](https://github.com/ypid/ansible-copy)
 [![GitHub Stars](https://img.shields.io/github/stars/ypid/ansible-copy.svg)](https://github.com/ypid/ansible-copy)
 
@@ -13,25 +13,29 @@ This role was written to be able to specify files to copy via inventory variable
 It is based on Ansible’s [copy module].
 If the [synchronize module] seems more suitable checkout the role [ypid.synchronize].
 
-[synchronize module]: https://docs.ansible.com/ansible/synchronize_module.html
-[copy module]: https://docs.ansible.com/ansible/copy_module.html
-[ypid.synchronize]: https://galaxy.ansible.com/list#/roles/4749
-
 ### Features
 
 * Ensures that the target parent directory exists.
 * Allows to delete files defined as `state: 'absent'`.
 
+[synchronize module]: https://docs.ansible.com/ansible/synchronize_module.html
+[copy module]: https://docs.ansible.com/ansible/copy_module.html
+[ypid.synchronize]: https://galaxy.ansible.com/list#/roles/4749
+
 ### Installation
 
 This role requires at least Ansible `v1.8.4`. To install it, run:
 
-    ansible-galaxy install ypid.copy
+```Shell
+ansible-galaxy install ypid.copy
+```
 
 To install via git, run either:
 
-    git clone https://github.com/ypid/ansible-copy.git ypid.copy
-    git submodule add https://github.com/ypid/ansible-copy.git ypid.copy
+```Shell
+git clone https://github.com/ypid/ansible-copy.git ypid.copy
+git submodule add https://github.com/ypid/ansible-copy.git ypid.copy
+```
 
 
 
@@ -40,28 +44,30 @@ To install via git, run either:
 
 List of default variables available in the inventory:
 
-    ---
-    
-    ## Checkout the documentation for the copy module.
-    
-    # copy_files_list:
-    #   - src: '/path/to/source/file'
-    #     dest: '/path/to/target/file'
-    #     create_parent_dirs: no
-    #     # state: 'absent'
-    
-    ## "Global" files to copy
-    copy_files_list: []
-    
-    ## "Host group" files to copy
-    copy_files_group_list: []
-    
-    ## "Host" files to copy
-    copy_files_host_list: []
-    
-    ## Testing, not yet working:
-    ## Ignore errors during copy job.
-    # copy_ignore_errors: False
+```YAML
+---
+
+## Checkout the documentation for the copy module.
+
+# copy_files_list:
+#   - src: '/path/to/source/file'
+#     dest: '/path/to/target/file'
+#     create_parent_dirs: no
+#     # state: 'absent'
+
+## "Global" files to copy
+copy_files_list: []
+
+## "Host group" files to copy
+copy_files_group_list: []
+
+## "Host" files to copy
+copy_files_host_list: []
+
+## Testing, not yet working:
+## Ignore errors during copy job.
+# copy_ignore_errors: False
+```
 
 List of internal variables used by the role:
 

@@ -27,11 +27,11 @@ ansigenome_info:
     It is based on Ansible’s [copy module].
     If the [synchronize module] seems more suitable checkout the role [ypid.synchronize].
 
-    [synchronize module]: https://docs.ansible.com/ansible/synchronize_module.html
-    [copy module]: https://docs.ansible.com/ansible/copy_module.html
-    [ypid.synchronize]: https://galaxy.ansible.com/list#/roles/4749
-
     ### Features
 
     * Ensures that the target parent directory exists.
     * Allows to delete files defined as `state: 'absent'`.
+
+    [synchronize module]: https://docs.ansible.com/ansible/synchronize_module.html
+    [copy module]: https://docs.ansible.com/ansible/copy_module.html
+    [ypid.synchronize]: https://galaxy.ansible.com/list#/roles/4749
