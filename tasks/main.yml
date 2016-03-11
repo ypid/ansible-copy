@@ -2,7 +2,10 @@
 
 - name: Combine file lists
   set_fact:
-    copy_files_list_combined: '{{ copy_files_list + copy_files_group_list + copy_files_host_list | default([]) }}'
+    copy_files_list_combined: '{{
+      (copy_files_list       | d([]) | list) +
+      (copy_files_group_list | d([]) | list) +
+      (copy_files_host_list  | d([]) | list) }}'
 
 ## Could use the file module, but this would require getting the dirname first.
 - name: Ensure that parent directories exist
@@ -15,7 +18,7 @@
             not item.create_parent_dirs
           )
         )
-  with_items: copy_files_list_combined
+  with_items: '{{ copy_files_list_combined }}'
 
 - name: Copy files to target system
   copy:
@@ -44,11 +47,11 @@
             item.state is undefined
           )
         )
-  with_items: copy_files_list_combined
+  with_items: '{{ copy_files_list_combined }}'
 
 - name: Delete files if state is absent
   file:
     path: '{{ item.dest }}'
     state: 'absent'
   when: (item.state is string and item.state == 'absent')
-  with_items: copy_files_list_combined
+  with_items: '{{ copy_files_list_combined }}'
