@@ -7,17 +7,15 @@
       (copy_files_group_list | d([]) | list) +
       (copy_files_host_list  | d([]) | list) }}'
 
-## Could use the file module, but this would require getting the dirname first.
 - name: Ensure that parent directories exist
-  shell: mkdir --parents $(dirname "{{ item.dest }}")
+  file:
+    path: '{{ item.dest | dirname }}'
+    state: 'directory'
+    owner: '{{ item.base_directory_owner | d(omit) }}'
+    group: '{{ item.base_directory_group | d(omit) }}'
+    mode:  '{{ item.base_directory_mode  | d(omit) }}'
   changed_when: False
-  when: (
-          item is mapping and (
-            (item.create_parent_dirs is defined and item.create_parent_dirs) or
-            item.create_parent_dirs is undefined or
-            not item.create_parent_dirs
-          )
-        )
+  when: (item is mapping and (item.create_parent_dirs|d(True) | bool))
   with_items: '{{ copy_files_list_combined }}'
 
 - name: Copy files to target system
@@ -28,9 +26,9 @@
     directory_mode: '{{ item.directory_mode | default(omit) }}'
     follow:         '{{ item.follow         | default(omit) }}'
     force:          '{{ item.force          | default(omit) }}'
+    owner:          '{{ item.owner          | default(omit) }}'
     group:          '{{ item.group          | default(omit) }}'
     mode:           '{{ item.mode           | default(omit) }}'
-    owner:          '{{ item.owner          | default(omit) }}'
     selevel:        '{{ item.selevel        | default(omit) }}'
     serole:         '{{ item.serole         | default(omit) }}'
     setype:         '{{ item.setype         | default(omit) }}'
