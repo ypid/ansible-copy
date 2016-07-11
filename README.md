@@ -4,10 +4,16 @@
      instead have a look at the files in the ./meta/ directory. -->
 
 [![Travis CI](http://img.shields.io/travis/ypid/ansible-copy.svg?style=flat)](http://travis-ci.org/ypid/ansible-copy)
-[![Ansible Galaxy](http://img.shields.io/badge/galaxy-ypid.copy-660198.svg?style=flat)](https://galaxy.ansible.com/detail#/role/4558)
+[![Ansible Galaxy](http://img.shields.io/badge/galaxy-ypid.copy-660198.svg?style=flat)](https://galaxy.ansible.com/ypid/copy)
 [![Platforms](http://img.shields.io/badge/platforms-debian%20/%20ubuntu-lightgrey.svg?style=flat)](#)
 [![GitHub Tags](https://img.shields.io/github/tag/ypid/ansible-copy.svg)](https://github.com/ypid/ansible-copy)
 [![GitHub Stars](https://img.shields.io/github/stars/ypid/ansible-copy.svg)](https://github.com/ypid/ansible-copy)
+
+### Warning, this is a deprecated role
+
+It has been superseded by [debops.resources](https://github.com/debops/ansible-resources).
+
+***
 
 Simple role to copy files from the Ansible controller to target systems.
 

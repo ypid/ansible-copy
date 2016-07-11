@@ -11,9 +11,9 @@
   file:
     path: '{{ item.dest | dirname }}'
     state: 'directory'
-    owner: '{{ item.base_directory_owner | d(omit) }}'
-    group: '{{ item.base_directory_group | d(omit) }}'
-    mode:  '{{ item.base_directory_mode  | d(omit) }}'
+    owner: '{{ item.parent_directory_owner | d(omit) }}'
+    group: '{{ item.parent_directory_group | d(omit) }}'
+    mode:  '{{ item.parent_directory_mode  | d(omit) }}'
   changed_when: False
   when: (item is mapping and (item.create_parent_dirs|d(True) | bool))
   with_items: '{{ copy_files_list_combined }}'
@@ -39,12 +39,7 @@
   # ignore_errors: yes
   # failed_when: True
   ## Not working, see: https://github.com/ansible/ansible/issues/3107
-  when: (
-          item is mapping and (
-            item.state is string and item.state == 'present' or
-            item.state is undefined
-          )
-        )
+  when: (item is mapping and item.state|d("present") == "present")
   with_items: '{{ copy_files_list_combined }}'
 
 - name: Delete files if state is absent

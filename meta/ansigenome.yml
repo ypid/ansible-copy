@@ -1,9 +1,13 @@
 ---
 
 ansigenome_info:
-  github_url: "https://github.com/ypid/ansible-copy"
-  git_branch: "master"
-  galaxy_id: "4558"
+  galaxy_url: 'https://galaxy.ansible.com/ypid/copy'
+  github_url: 'https://github.com/ypid/ansible-copy'
+  git_branch: 'master'
+
+  status:
+    name: 'deprecated'
+    note: 'It has been superseded by [debops.resources](https://github.com/debops/ansible-resources).'
 
   travis: True
 
